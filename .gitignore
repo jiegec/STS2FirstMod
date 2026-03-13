@@ -4,3 +4,4 @@
 
 *.pck
 *.dll
+dist/
