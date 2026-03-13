@@ -1,5 +1,7 @@
 # Slay the spire 2 mod example
 
+NOTE: For beta v0.99 version, see [beta-v0.99 branch](https://github.com/jiegec/STS2FirstMod/tree/beta-v0.99).
+
 Example mod project made according to [STS2 Early Access Mod Guide by doctornoodlearms on r/slaythespire](https://www.reddit.com/r/slaythespire/comments/1rm5gvg/sts2_early_access_mod_guide/).
 
 My process for building this mod on macOS Apple Silicon:
@@ -55,7 +57,7 @@ My process for building this mod on macOS Apple Silicon:
 8. Prepare an image named `mod_image.png` in the `FirstMod` directory under project root directory for the mod's icon
 9. Go to Project -> Export..., click Add..., and select Windows Desktop
 10. Under the Resources section, select Export selected resources (and dependencies), tick `FirstMod/mod_image.png` and `mod_manifest.json` below, then click Export PCK/ZIP..., save as `FirstMod.pck`. You can also export via command line, e.g., `/Applications/Godot_mono.app/Contents/MacOS/Godot --export-pack "Windows Desktop" FirstMod.pck --headless`
-11. Copy `./.godot/mono/temp/bin/Debug/FirstMod.dll` and `FirstMod.pck` to the `FirstMod` directory under the game's `mods` directory, e.g., `~/Library/Application\ Support/SlayTheSpire2/mods/FirstMod` (macOS) or `~/.steam/steam/steamapps/common/Slay\ the\ Spire\ 2/mods/FirstMod` (Linux), create the directory if it doesn't exist
+11. Copy `./.godot/mono/temp/bin/Debug/FirstMod.dll` and `FirstMod.pck` to the `FirstMod` directory under the game's `mods` directory, e.g., `~/Library/Application\ Support/Steam/steamapps/common/Slay\ the\ Spire\ 2/SlayTheSpire2.app/Contents/MacOS/mods/FirstMod` (macOS) or `~/.steam/steam/steamapps/common/Slay\ the\ Spire\ 2/mods/FirstMod` (Linux), create the directory if it doesn't exist
 12. Launch the game
 
 A build script is provided at `build.sh` to build the mod without GUI.
