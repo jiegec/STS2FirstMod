@@ -62,12 +62,19 @@ My process for building this mod on macOS Apple Silicon:
 11. Copy `FirstMod.json`, `./.godot/mono/temp/bin/Debug/FirstMod.dll` and `FirstMod.pck` to the `FirstMod` directory under the game's `mods` directory, e.g., `~/Library/Application\ Support/Steam/steamapps/common/Slay\ the\ Spire\ 2/SlayTheSpire2.app/Contents/MacOS/mods/FirstMod` (macOS) or `~/.steam/steam/steamapps/common/Slay\ the\ Spire\ 2/mods/FirstMod` (Linux), create the directory if it doesn't exist
 12. Launch the game
 
-A build script is provided at `build.sh` to build the mod without GUI. An installation script is provided at `install.sh` to install the mod automatically.
+A build script is provided at `build.sh` to build the mod without GUI. An installation script is provided at `install.sh` to install the mod automatically. Tested to build & run in both macOS and Linux.
 
-Starting Godot's Debug Server:
+What's next:
 
-1. In Godot, select Debug -> Keep Debug Server Open
-2. In Steam, set the launch option `--remote-debug tcp://127.0.0.1:6007`
-3. Launch the game
+1. Decompile the game:
 
-Tested to build & run in both macOS and Linux.
+    ```shell
+    git clone https://github.com/icsharpcode/ILSpy.git
+    nix-shell -p dotnet-sdk_10 -p dotnet-runtime_10 -p powershell --run "cd ILSpy && dotnet build ILSpy.XPlat.slnf && dotnet ./ICSharpCode.ILSpyCmd/bin/Debug/net10.0/ilspycmd.dll -o $PWD ~/.steam/steam/steamapps/common/Slay\ the\ Spire\ 2/data_sts2_linuxbsd_x86_64/sts2.dll --nested-directories -p"
+    ```
+
+2. Read the code, and make modifications in runtime by reflection or Harmony.
+3. For runtime debugging, you can use plain logging or start Godot's Debug Server:
+    1. In Godot, select Debug -> Keep Debug Server Open
+    2. In Steam, set the launch option `--remote-debug tcp://127.0.0.1:6007`
+    3. Launch the game
